@@ -17,4 +17,6 @@ color5 = (251, 133, 0)
 
 #fonts
 pygame.font.init()
-calibri = pygame.font.SysFont('Calibri', 15)
+calibriSmall = pygame.font.SysFont('Calibri', 15)
+calibriMedium = pygame.font.SysFont('Calibri', 25)
+calibriBig = pygame.font.SysFont('Calibri', 35)

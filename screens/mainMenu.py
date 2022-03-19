@@ -1,12 +1,9 @@
-from utils import constants
+from screens.enterGame import showEnterGame
+from utils import constants, functions
 import pygame, timeit
 
-def showMainMenu():
+def showMainMenu(screen):
 
-    size = constants.width, constants.height
-    screen = pygame.display.set_mode(size)
-
-    pygame.display.set_caption("among us")
     playButton = pygame.image.load("textures/buttons/mainMenu/play.png")
     playButtonWidth = playButton.get_width()
     playButtonHeight = playButton.get_height()
@@ -23,19 +20,20 @@ def showMainMenu():
             if event.type == pygame.QUIT:
                 quit()
 
-
         now = timeit.default_timer()
         fps = 1/(now-lastTime)
         lastTime = now
-        fpsSurface = constants.calibri.render(f"FPS: {int(fps)}", False, constants.color2)
+        fpsSurface = constants.calibriSmall.render(f"FPS: {int(fps)}", False, constants.color2)
         
         mousePosition = pygame.mouse.get_pos()
         playRect = playButton.get_rect()
-        newPosition = (calcMid(constants.width, playButton.get_width()), calcMid(constants.height, playButton.get_height()))
+        newPosition = (functions.calcMid(constants.width, playButton.get_width()), functions.calcMid(constants.height, playButton.get_height()))
         
         playRect.update(newPosition,(playButton.get_width(), playButton.get_height()))
         
         if(playRect.collidepoint(mousePosition)):
+            if(pygame.mouse.get_pressed()[0]):
+                showEnterGame(screen)
             if(not isCollidingInPlayButtonInLastSprite):
                 playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (playButtonWidth/4.5, playButtonHeight/4.5))
                 pygame.mixer.music.play()
@@ -47,9 +45,7 @@ def showMainMenu():
             isCollidingInPlayButtonInLastSprite = False
 
         screen.fill(constants.color3)
-        screen.blit(fpsSurface, (20,430))
+        screen.blit(fpsSurface, (10,430))
         screen.blit(playButton, newPosition)
         pygame.display.flip()
 
-def calcMid(length, surfaceLength):
-    return (length/2)-(surfaceLength/2)
