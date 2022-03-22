@@ -1,0 +1,9 @@
+{
+	id: 1,
+	isDead: False,
+	isLeader: False,
+	x: 0,
+	y: 0,
+	deadX: 0,
+	deadY: 0
+}

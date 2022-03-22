@@ -2,7 +2,7 @@ from screens.enterGame import showEnterGame
 from utils import constants, functions
 import pygame, timeit
 
-def showMainMenu(screen):
+def showMainMenu(screen, name):
 
     playButton = pygame.image.load("textures/buttons/mainMenu/play.png")
     playButtonWidth = playButton.get_width()
@@ -33,7 +33,7 @@ def showMainMenu(screen):
         
         if(playRect.collidepoint(mousePosition)):
             if(pygame.mouse.get_pressed()[0]):
-                showEnterGame(screen)
+                showEnterGame(screen,name)
             if(not isCollidingInPlayButtonInLastSprite):
                 playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (playButtonWidth/4.5, playButtonHeight/4.5))
                 pygame.mixer.music.play()
