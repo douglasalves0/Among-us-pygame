@@ -1,0 +1,3 @@
+playerData = {
+	"data": []
+}
