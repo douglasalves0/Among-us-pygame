@@ -7,7 +7,7 @@ def showMainMenu(screen, name):
     playButton = pygame.image.load("textures/buttons/mainMenu/play.png")
     playButtonWidth = playButton.get_width()
     playButtonHeight = playButton.get_height()
-    playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (playButtonWidth/5, playButtonHeight/5))
+    playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (int(playButtonWidth/5), int(playButtonHeight/5)))
 
     pygame.mixer.music.load("audio/menu/menuSelection.mp3")
 
@@ -35,12 +35,12 @@ def showMainMenu(screen, name):
             if(pygame.mouse.get_pressed()[0]):
                 showEnterGame(screen,name)
             if(not isCollidingInPlayButtonInLastSprite):
-                playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (playButtonWidth/4.5, playButtonHeight/4.5))
+                playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (int(playButtonWidth/4.5), int(playButtonHeight/4.5)))
                 pygame.mixer.music.play()
             isCollidingInPlayButtonInLastSprite = True
         else:
             if(isCollidingInPlayButtonInLastSprite):
-                playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (playButtonWidth/5, playButtonHeight/5))
+                playButton = pygame.transform.scale(pygame.image.load("textures/buttons/mainMenu/play.png"), (int(playButtonWidth/5),   int(playButtonHeight/5)))
                 pygame.mixer.music.play()
             isCollidingInPlayButtonInLastSprite = False
 
